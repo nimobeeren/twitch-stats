@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Twitch Graph | Word Cloud</title>
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+	<nav class="center">
+		<div class="nav-wrapper container">
+			<h1 id="logo">Twitch Graph</h1>
+			<div id="subtitle">Twitch Chat Visualisations</div>
+			<div id="nav">
+				<a href="/"><button href="/">Word Cloud</button></a>
+				<a href="/word-counter"><button>VAC Counter</button></a>
+				<a href="/about"><button>About</button></a>
+			</div>
+		</div>
+	</nav>
+	<main>
+		<form id="channel-picker" class="container" action="">
+			<span>Channel:</span>
+			<input id="channel">
+			<button>Pick</button>
+			<div id="status">Connected</div>
+		</form>
+		<div id="word-cloud" class="container">
+		<canvas id="cloud-canvas" width="1024" height="576">Your browser does not support HTML canvas</canvas>
+			<div style="margin: 16px">
+				<button type="button" onclick="growCircle()">Grow</button>
+				<button type="button" onclick="shrinkCircle()">Shrink</button>
+			</div>
+		</div>
+	</main>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script>
+		// Create Socket.IO object
+		var socket = io();
+
+		// Catch messages from selected channel
+		socket.on('chatMessage', function(message){
+			// Log message to console
+			console.log(message);
+			
+			// Create some circles
+		});
+
+		// Let the user know we connected to the channel
+		socket.on('channelChangeSuccess', function(){
+			$('#status').css('opacity', '1');
+			$('#status').animate({ opacity: 0 }, 1500);
+		});
+
+		// Ask server to change channel
+		$('form').submit(function(){
+			resetCounter();
+			socket.emit('channelChange', $('#channel').val());
+			return false; // Avoids reloading the page
+		});
+
+		// Initiate variables for animated canvas drawing
+		var c = document.getElementById("cloud-canvas");
+		var ctx = c.getContext('2d');
+		var requestAnimationFrame = window.requestAnimationFrame || 
+																window.mozRequestAnimationFrame || 
+																window.webkitRequestAnimationFrame || 
+																window.msRequestAnimationFrame;
+		
+		function drawCircle(){
+			// Clear canvas
+			ctx.clearRect(0, 0, c.width, c.height);
+
+			// Fill background
+			ctx.fillStyle = '#141414';
+			ctx.fillRect(0, 0, c.width, c.height);
+
+			// Draw circle
+			var radius = 25 + 150 * Math.abs(Math.cos(angle));
+			ctx.beginPath();
+			ctx.arc(c.width/2, c.height/2, radius, 0 , 2*Math.PI);
+			ctx.closePath();
+
+			// Fill circle
+			ctx.fillStyle = "#6441a4";
+			ctx.fill();
+
+			angle += Math.PI / 64;
+
+			// Update the circle when browser decides to
+			requestAnimationFrame(drawCircle);
+		}
+	</script>
+</body>
+</html>

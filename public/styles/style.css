@@ -1,0 +1,66 @@
+html, body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	color: #D3D3D3;
+	background-color: #1E1E1E;
+	font-family: HelveticaNeue,Helvetica,sans-serif;
+}
+main {
+	margin: 16px;
+}
+div, form {
+	margin: 0 auto;
+}
+nav {
+	min-width: 350px;
+	background-color: #6441A4;
+	padding: 8px;
+}
+h1 {
+	margin: 8px;
+	font-size: 32px;
+	color: white;
+	line-height: 100%;
+}
+h2 {
+	margin: 16px auto 0 auto;
+}
+button {
+	min-width: 72px;
+}
+table {
+	width: 50%;
+	float: ;
+}
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+	table-layout: fixed;
+}
+.center {
+	text-align: center;
+	margin: 0px auto;
+}
+.container {
+	width: 70%;
+	min-width: 350px;
+	padding: 8px;
+}
+#subtitle {
+	margin: 4px;
+}
+#status {
+	color: white;
+	font-size: 12px;
+	opacity: 0;
+}
+#keyword-picker span {
+	width: 64px;
+}
+#count, #freq {
+	margin: 20px auto;
+	font-size: 20px;
+}
