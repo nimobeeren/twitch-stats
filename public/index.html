@@ -103,7 +103,7 @@
 				var found = false;
 				for(j = 0; j < recentWords.length; j++){
 					// If word is already in recentWords, only add the current time to the existing entry
-					if(recentWords[j].word == words[i]){
+					if(recentWords[j].word.toLowerCase() == words[i].toLowerCase()){
 						found = true;
 						recentWords[j].times.push(now);
 						recentWords[j].count = recentWords[j].times.length; // Updates count, may be obsolete
