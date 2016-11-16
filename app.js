@@ -3,6 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var irc = require('irc');
+var chart = require('chart.js');
 
 // Declare public static directory
 app.use(express.static(__dirname + '/public'));
