@@ -20,11 +20,17 @@
 	// Declare how many words are supposed to show up in the common words table
 	var maxWords = 10;
 
+	// Declare how long keywords should be stored (in ms)
+	var maxKeywordAge = 5000;
+
 	// Declare how long common words are supposed to be stored (in ms)
 	var maxWordAge = 60000;
 
 	// Set the update time for the table (in ms)
 	var updateTime = 1000;
+
+	// Create array to temporarily store times of keyword occurances
+	var recentKeywords = [];
 
 	// Create array to temporarily store words from chat messages
 	var recentWords = [];
@@ -115,7 +121,7 @@
 					recentWords.push({
 						word: words[i],
 						times: [now],
-						count: 1
+						count: 1 // TODO: Remove count property and sort by times.length instead
 					});
 				}
 			}
@@ -140,18 +146,44 @@
 
 			// Split message up into individual words
 			var words = message.split(' ');
-			
-			// Add words from message to recentWords
-			addWords(words);
 
 			// Increment keyword counter if word matches
 			for(i = 0; i < words.length; i++){
 				if(words[i].toLowerCase() == $('#keyword').val().toLowerCase()){
-					var count = parseInt($('#count').html());
-					$('#count').html(count + 1);
+					// TODO: Add to recentKeywords here
+
+					// Get current time
+					var date = new Date();
+					var now = date.getTime();
+
+					recentKeywords.push(now);
 				}
 			}
+			
+			// Add words from message to recentWords
+			addWords(words);
 		});
+
+		// Every updateTime, calculate the frequency of the keyword in the past 5 secs
+		setInterval(function(){
+			count = recentKeywords.length;
+			freq = count / maxKeywordAge * 60000 // In words/min
+			$('#freq').html(freq);
+		}, updateTime);
+
+		// TODO: Every updateTime, remove words from recentKeywords that are over some 5 secs old
+		setInterval(function(){
+			// Get current time
+			var date = new Date();
+			var now = date.getTime();
+
+			// Remove word times if they are over maxKeywordAge old
+			for(i = 0; i < recentKeywords.length; i++){
+				while(now - recentKeywords[i] > maxKeywordAge){
+					recentKeywords.shift();
+				}
+			}
+		}, updateTime);
 
 		// Every updateTime, display the maxWords most common words and their count in the table
 		setInterval(function(){
@@ -186,25 +218,17 @@
 				while(now - recentWords[i].times[0] > maxWordAge){
 					recentWords[i].times.shift();
 				}
-				recentWords[i].count = recentWords[i].times.length; // Update count after removing old times
+
+				// Update count after removing old times
+				// TODO: Will be obsolete after removing count
+				recentWords[i].count = recentWords[i].times.length;
+
 				// If word count is 0, remove it from recentWords
 				if(recentWords[i].count == 0){
 					recentWords.splice(i, 1);
 				}
 			}
 		}, updateTime);
-
-		// Every second, calculate the frequency of the keyword
-		var oldCount = 0;
-		var newCount;
-		var dt = 1000;
-		setInterval(function(){
-			newCount = $("#count").html();
-			dCount = newCount - oldCount;
-			freq = dCount / dt * 1000; // In words/s
-			$('#freq').html(freq);
-			oldCount = newCount;
-		}, dt);
 
 		// Fill table to have space for 10 words
 		clearTable(maxWords);
