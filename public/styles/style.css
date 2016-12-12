@@ -64,3 +64,9 @@ table, th, td {
 	margin: 20px auto;
 	font-size: 20px;
 }
+#word-counter {
+	text-align: center;
+}
+#word-counter #num {
+	font-size: 18px;
+}
