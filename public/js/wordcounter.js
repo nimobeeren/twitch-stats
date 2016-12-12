@@ -25,6 +25,12 @@ function addWords(words){
 	var now = date.getTime();
 
 	for(i = 0; i < words.length; i++){
+		// Increment keyword counter if word matches
+		if(words[i].toLowerCase() == $('#keyword').val().toLowerCase()){
+			var count = parseInt($('#count').html());
+			$('#count').html(count + 1);
+		}
+
 		// Check if word is already in recentWords
 		var found = false;
 		for(j = 0; j < recentWords.length; j++){
@@ -56,14 +62,6 @@ socket.on('chatMessage', function(from, to, message){
 	
 	// Add words from message to recentWords
 	addWords(words);
-
-	// Increment keyword counter if word matches
-	for(i = 0; i < words.length; i++){
-		if(words[i].toLowerCase() == $('#keyword').val().toLowerCase()){
-			var count = parseInt($('#count').html());
-			$('#count').html(count + 1);
-		}
-	}
 });
 
 // Every updateTime, display the maxWords most common words and their count in the table
