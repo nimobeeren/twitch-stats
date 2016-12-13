@@ -27,30 +27,32 @@
 	<nav>
 		<div class="center container">
 			<h1 id="logo">Twitch Stats</h1>
-			<div id="subtitle">Chat Statistics and Visualisations</div>
+			<div class="subtitle">Chat Statistics and Visualisations</div>
 		</div>
 	</nav>
 	<main>
 		<div class="center container">
 			<form id="channel-picker" action="">
-				<input id="channel" placeholder="Channel">
+				<input id="channel" placeholder="Enter a channel name...">
 				<button>Pick</button>
 				<div id="status">Connected</div>
 			</form>
 		</div>
-		<div id="keyword-picker" class="center container">
-			<span>Keyword: </span><input id="keyword" onchange="resetCounter()" placeholder="Type something...">
-		</div>
-		<div id="word-counter" class="center container">
-			<h2>Counter</h2>
-			<p id="count">0</p>
-			<span id="count-unit">words</span><br>
-			<button id="count-reset" type="button" onclick="resetCounter()">Reset</button>
-		</div>
-		<div id="word-freq" class="center container">
-			<h2>Frequency</h2>
-			<p id="freq">0</p>
-			<span id="freq-unit">words/sec</span>
+		<div id="keyword" class="container">
+			<div id="keyword-picker" class="center">
+				<span>Keyword: </span><input id="keyword" onchange="resetCounter()" placeholder="Type something...">
+			</div>
+			<div id="word-counter" class="center">
+				<h2>Counter</h2>
+				<p id="count">0</p>
+				<span id="count-unit">words</span><br>
+				<button id="count-reset" type="button" onclick="resetCounter()">Reset</button>
+			</div>
+			<div id="word-freq" class="center">
+				<h2>Frequency</h2>
+				<p id="freq">0</p>
+				<span id="freq-unit">words/sec</span>
+			</div>
 		</div>
 		<div id="common-words" class="center container">
 			<h2>Common words</h2>
