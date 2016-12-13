@@ -66,6 +66,19 @@
 	</main>
 	<script src="/js/wordcounter.js"></script>
 	<script>
+		// Load the emotes list
+		var emotes;
+		$.getJSON('/emotes.json', function(json){
+			emotes = json.emotes;
+		});
+
+		// Gets emote data from json file by name
+		function getEmoteByName(name){
+			return emotes.filter(
+				function(emotes){ return emotes.name == name }
+			);
+		}
+
 		// Ask server to change channel when submit button is clicked
 		$('#channel-picker').submit(function(){
 			resetCounter();
@@ -73,8 +86,9 @@
 			return false; // Avoids reloading the page
 		});
 
-		// Receive feeback when we connect to the channel
+		// Provide feeback when we connect to the channel
 		socket.on('channelChangeSuccess', function(){
+			$('#status').html('Connected');
 			$('#status').css('opacity', '1');
 			$('#status').animate({ opacity: 0 }, 1500);
 		});

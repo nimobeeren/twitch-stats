@@ -1,5 +1,5 @@
 Current stuff:
-
+* Clear table when connecting new channel
 
 Future stuff:
 * Popout

@@ -31,8 +31,15 @@ io.on('connection', function(socket){
 
 	// Join new channel when user changes it
 	socket.on('channelChange', function(channel){
+		channel = '#' + channel;
+		var oldChannel = Object.keys(ircClient.chans)[0];
+
+		if(oldChannel){
+			console.log('Leaving', oldChannel);
+			ircClient.part(oldChannel);
+		}
 		console.log('Joining', channel);
-		ircClient.join('#' + channel);
+		ircClient.join(channel);
 	});
 
 	// Log socket disconnect

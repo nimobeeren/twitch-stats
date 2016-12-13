@@ -81,7 +81,21 @@ setInterval(function(){
 	// Add the maxWords most common words and their count to the table
 	// Don't try to add more words than there are in recentWords
 	for(i = 0; i < maxWords && i < sortedWords.length; i++){
-		tbody.children('tr').eq(i).children('td').eq(0).text(sortedWords[i].word);
+		// Try to get an emote that matches this word
+		var emote = getEmoteByName(sortedWords[i].word)[0];
+
+		if(emote){
+			// Set table cell content to emote image instead of text
+			// TODO: Should probably only do this once for each image, or does the browser handle it?
+			// It probably does...
+			var url = 'https://static-cdn.jtvnw.net/emoticons/v1/' + emote.id + '/1.0';
+			tbody.children('tr').eq(i).children('td').eq(0).html('<img src="' + url + '">'); // TODO: Tidy up with jQuery
+		} else {
+			// Set table cell content to the regular word
+			tbody.children('tr').eq(i).children('td').eq(0).text(sortedWords[i].word);
+		}
+
+		// Set the count for the current word in the table
 		tbody.children('tr').eq(i).children('td').eq(1).text(sortedWords[i].count);
 	}
 }, updateTime);
