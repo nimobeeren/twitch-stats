@@ -55,7 +55,7 @@ function addWords(words){
 
 // Catch messages from selected channel
 socket.on('chatMessage', function(from, to, message){
-	console.log(message);
+	//console.log(message);
 
 	// Split message up into individual words
 	var words = message.split(' ');

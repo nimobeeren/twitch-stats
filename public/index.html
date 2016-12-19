@@ -31,14 +31,14 @@
 		</div>
 	</nav>
 	<main>
-		<div class="center container">
+		<div id="channel-picker-container" class="center container">
 			<form id="channel-picker" action="">
 				<input id="channel" placeholder="Enter a channel name...">
 				<button>Pick</button>
 				<div id="status">Connected</div>
 			</form>
 		</div>
-		<div id="keyword" class="container">
+		<div id="keyword-container" class="container">
 			<div id="keyword-picker" class="center">
 				<span>Keyword: </span><input id="keyword" onchange="resetCounter()" placeholder="Type something...">
 			</div>
@@ -54,7 +54,7 @@
 				<span id="freq-unit">words/sec</span>
 			</div>
 		</div>
-		<div id="common-words" class="center container">
+		<div id="common-words-container" class="center container">
 			<h2>Common words</h2>
 			<p>The most used words in the past 60 seconds<p>
 			<table id="common-words-table" class="center">
