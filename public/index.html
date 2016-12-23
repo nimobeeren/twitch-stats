@@ -25,7 +25,7 @@
 </head>
 <body>
 	<nav>
-		<div class="center container">
+		<div class="center">
 			<h1 id="logo">Twitch Stats</h1>
 			<div class="subtitle">Chat Statistics and Visualisations</div>
 		</div>
@@ -90,6 +90,7 @@
 
 		// Provide feeback when we connect to the channel
 		socket.on('channelChangeSuccess', function(){
+			recentWords = []; // clear recent words
 			$('#status').html('Connected');
 			$('#status').css('opacity', '1');
 			$('#status').animate({ opacity: 0 }, 1500);
