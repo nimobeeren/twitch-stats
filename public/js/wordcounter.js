@@ -64,7 +64,7 @@ socket.on('chatMessage', function(from, to, message){
 	addWords(words);
 });
 
-// Every updateTime, display the maxWords most common words and their count in the table
+// Display the maxWords most common words and their count in the table
 setInterval(function(){
 	// Remove all data from table
 	clearTable();
@@ -100,7 +100,7 @@ setInterval(function(){
 	}
 }, updateTime);
 
-// Every updateTime, remove word times that are over maxWordAge old
+// Remove word occurrances that are over maxWordAge old
 setInterval(function(){
 	// Get current time
 	var date = new Date();
@@ -131,5 +131,7 @@ setInterval(function(){
 	oldCount = newCount;
 }, dt);
 
-// Fill table to have space for 10 words
-clearTable(maxWords);
+// On load, fill table to have space for 10 words
+$(document).ready(function(){
+	clearTable(maxWords);
+})
