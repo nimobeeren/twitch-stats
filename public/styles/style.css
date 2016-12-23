@@ -5,18 +5,16 @@ body {
 	min-width: 365px;
 	margin: 0;
 	color: #D3D3D3;
-	background-color: #1E1E1E;
+	background-color: #141414;
+	text-align: center;
 	font-family: HelveticaNeue,Helvetica,sans-serif;
 }
 main {
 	margin: 16px;
 }
-div, form {
-	margin: 0 auto;
-}
 nav {
 	background-color: #6441A4;
-	padding: 8px;
+	padding: 16px;
 }
 h1 {
 	margin: 8px;
@@ -25,7 +23,7 @@ h1 {
 	line-height: 100%;
 }
 h2 {
-	margin: 16px auto 0 auto;
+	margin: 8px auto;
 }
 button {
 	min-width: 72px;
@@ -33,20 +31,27 @@ button {
 table {
 	width:100%;
 	max-width: 500px;
-}
-table, th, td {
-	border: 1px solid black;
+	line-height: 28px;
 	border-collapse: collapse;
 	text-align: center;
 	table-layout: fixed;
 }
+table, th, td {
+	border: 1px solid black;
+}
+th {
+	background-color: #4B317B;
+}
 .center {
 	text-align: center;
-	margin: 0px auto;
+	margin: 0 auto;
 }
 .container {
-	width: 70%;
-	padding: 8px;
+	min-width: 265px;
+	padding: 28px;
+	margin: 16px auto;
+	background-color: #1E1E1E;
+	display: table;
 }
 .subtitle {
 	margin: 4px;
@@ -62,4 +67,8 @@ table, th, td {
 #count, #freq {
 	margin: 20px auto;
 	font-size: 20px;
+}
+#common-words-table img {
+	margin: 0 auto;
+	display: block;
 }
