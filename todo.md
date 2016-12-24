@@ -1,18 +1,15 @@
 Current stuff:
-* Improve styling such as:
-  - Table cell height
-  - Better seperation between different parts
-* Make 404 page
+* Connected channel stats (live, uptime, viewers)
 * Remove /word-cloud.html
-* Reset counter instantly when keyword changes
 
 Future stuff:
-* Connected channel stats (live, uptime, viewers)
+* Optimize emote loading
+* Make 404 page
+* Make about page
 * Better frequency interpolation
 * Emote hover name
 * Popout/embedded stream
-* Chart
-* Feedback when join fails
+* Charts
 * VAC/viewer
 * VoteYea vs VoteNay
 

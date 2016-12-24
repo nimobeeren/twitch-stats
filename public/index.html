@@ -74,11 +74,27 @@
 			emotes = json.emotes;
 		});
 
+		var bttvEmotes;
+		$.getJSON('https://api.betterttv.net/emotes', function(json){
+			bttvEmotes = json.emotes;
+		});
+
 		// Gets emote data from json file by name
-		function getEmoteByName(name){
-			return emotes.filter(
+		function getEmoteURLByName(name){
+			var result;
+			result = emotes.filter(
 				function(emotes){ return emotes.name == name }
 			);
+			if(result.length > 0){
+				return 'https://static-cdn.jtvnw.net/emoticons/v1/' + result[0].id + '/1.0';
+			}
+			result = bttvEmotes.filter(
+				function(emotes){ return emotes.regex == name }
+			);
+			if(result.length > 0){
+				return result[0].url;
+			}
+			return false;
 		}
 
 		// Ask server to change channel when submit button is clicked
