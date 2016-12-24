@@ -1,6 +1,5 @@
 Current stuff:
 * Connected channel stats (live, uptime, viewers)
-* Remove /word-cloud.html
 
 Future stuff:
 * Optimize emote loading
