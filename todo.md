@@ -1,5 +1,7 @@
 Current stuff:
 * Connected channel stats (live, uptime, viewers)
+* Channel emotes
+* BTTV Shared emotes
 
 Future stuff:
 * Optimize emote loading

@@ -3,25 +3,25 @@
 <head>
 	<title>Twitch Stats | Home</title>
 	<link rel="stylesheet" type="text/css" href="/styles/style.css">
-</style>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/jquery.min.js"></script>
-<script>
-	// Create Socket.IO object
-	var socket = io();
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/analytics.js"></script>
+	<script>
+		// Create Socket.IO object
+		var socket = io();
 
-	// Declare how many words are supposed to show up in the common words table
-	var maxWords = 10;
+		// Declare how many words are supposed to show up in the common words table
+		var maxWords = 10;
 
-	// Declare how long common words are supposed to be stored (in ms)
-	var maxWordAge = 60000;
+		// Declare how long common words are supposed to be stored (in ms)
+		var maxWordAge = 60000;
 
-	// Set the update time for the table (in ms)
-	var updateTime = 1000;
+		// Set the update time for the table (in ms)
+		var updateTime = 1000;
 
-	// Create array to temporarily store words from chat messages
-	var recentWords = [];
-</script>
+		// Create array to temporarily store words from chat messages
+		var recentWords = [];
+	</script>
 </head>
 <body>
 	<nav>
