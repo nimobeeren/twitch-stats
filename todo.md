@@ -13,6 +13,7 @@ Future stuff:
 * Charts
 * VAC/viewer
 * VoteYea vs VoteNay
+* Dark styled inputs/buttons
 
 * Hype words:
  - VAC

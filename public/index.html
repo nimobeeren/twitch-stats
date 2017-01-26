@@ -31,39 +31,43 @@
 		</div>
 	</nav>
 	<main>
-		<div id="channel-picker-container" class="center container">
-			<form id="channel-picker" action="">
-				<input id="channel" placeholder="Enter a channel name...">
-				<button>Pick</button>
-				<div id="status">Connected</div>
-			</form>
-		</div>
-		<div id="keyword-container" class="container">
-			<div id="keyword-picker" class="center">
-				<span>Keyword: </span><input id="keyword" onchange="resetCounter()" placeholder="Type something...">
+		<div class="flex-container">
+			<div id="channel-picker-container" class="center container">
+				<form id="channel-picker" action="">
+					<input id="channel" placeholder="Enter a channel name...">
+					<button>Pick</button>
+					<div id="status">Connected</div>
+				</form>
 			</div>
-			<div id="word-counter" class="center">
-				<h2>Counter</h2>
-				<p id="count">0</p>
-				<span id="count-unit">words</span><br>
+		</div>
+		<div class="flex-container">
+			<div id="keyword-container" class="container">
+				<h2>Keyword</h2>
+				<p>Track the usage of a single word</p>
+				<input id="keyword" onchange="resetCounter()" placeholder="Type something...">
+				<div id="word-counter" class="center">
+					<div class="field">
+						<span class="field-name">Count</span><span id="count" class="field-val big-val">0</span> <span class="field-unit">words</span>
+					</div>
+				</div>
+				<div id="word-freq" class="center">
+					<div class="field">
+						<span class="field-name">Frequency</span><span id="freq" class="field-val big-val">0</span><span class="field-unit">words/s</span>
+					</div>
+				</div>
 				<button id="count-reset" type="button" onclick="resetCounter()">Reset</button>
 			</div>
-			<div id="word-freq" class="center">
-				<h2>Frequency</h2>
-				<p id="freq">0</p>
-				<span id="freq-unit">words/sec</span>
+			<div id="common-words-container" class="center container">
+				<h2>Common words</h2>
+				<p>The most used words in the past 60 seconds</p>
+				<table id="common-words-table" class="center">
+					<thead>
+						<tr><th>Word</th><th>Count</th></tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
-		</div>
-		<div id="common-words-container" class="center container">
-			<h2>Common words</h2>
-			<p>The most used words in the past 60 seconds<p>
-			<table id="common-words-table" class="center">
-				<thead>
-					<tr><th>Word</th><th>Count</th></tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
 		</div>
 	</main>
 	<script src="/js/wordcounter.js"></script>

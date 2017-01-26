@@ -46,12 +46,35 @@ th {
 	text-align: center;
 	margin: 0 auto;
 }
+.flex-container {
+	display: flex;
+}
 .container {
 	min-width: 265px;
 	padding: 28px;
 	margin: 16px auto;
 	background-color: #1E1E1E;
 	display: table;
+}
+.field {
+	display: flex;
+	align-items: center;
+}
+.field-name {
+	flex: 4 0;
+	text-align: right;
+}
+.field-val {
+	flex: 3 0;
+	text-align: center;
+	margin: 0 4px;
+}
+.field-unit {
+	flex: 4 0;
+	text-align: left;
+}
+.big-val {
+	font-size: 24px;
 }
 .subtitle {
 	margin: 4px;
@@ -61,12 +84,11 @@ th {
 	font-size: 12px;
 	opacity: 0;
 }
-#keyword-picker span {
-	width: 64px;
+#keyword {
+	margin-bottom: 16px;
 }
-#count, #freq {
-	margin: 20px auto;
-	font-size: 20px;
+#count-reset {
+	margin-top: 16px;
 }
 #common-words-table img {
 	margin: 0 auto;
